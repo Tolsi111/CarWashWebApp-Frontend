@@ -1,39 +1,30 @@
-import {useState} from "react";
+import {Route, Routes} from "react-router-dom";
+import NavBar from "./components/Navbar/NavBar";
+import Footer from "./components/Footer/Footer";
+import Home from "./pages/HomePage/Home";
+import ListCarWash from "./pages/ListCarwashPage/ListCarwash";
+import RegisterCarWash from "./pages/RegisterPage/RegisterCarWash";
+import Login from "./pages/LoginPage/Login";
+import About from "./pages/AboutUsPage/About";
+import './App.css';
 
 function App() {
 
-    const [carwashes, setCarwashes] = useState([]);
-
-    async function getUsers(event) {
-        const response = await fetch('http://localhost:8080/carwash');
-        const responseData = await response.json();
-        // console.log(responseData)
-        const loadedCarwashes = [];
-
-        for (const key in responseData) {
-            loadedCarwashes.push({
-                id: responseData[key].id,
-                address: responseData[key].address,
-                name: responseData[key].name
-            })
-        }
-        setCarwashes(loadedCarwashes);
-        event.preventDefault();
-    }
-
-    const carwashList = carwashes.map((carwash) => {
-        return <p key={carwash.id}>id: {carwash.id}, first name: {carwash.address}, last name: {carwash.name}</p>
-    })
-
     return (
-        <div>
-            <h1>Car wash web app</h1>
-            <h3>By Atlas</h3>
-            <hr/>
-            <button onClick={getUsers}>Fetch Carwashes</button>
-            <hr/>
-            {carwashList}
-        </div>
+        <>
+            <NavBar/>
+            <div className='page-container'>
+                <Routes>
+                    <Route path='/' element = {<Home/>}/>
+                    <Route path='/home' element = {<Home/>}/>
+                    <Route path='/list-carwash' element = {<ListCarWash/>}/>
+                    <Route path='/register-carwash' element = {<RegisterCarWash/>}/>
+                    <Route path='/login' element = {<Login/>}/>
+                    <Route path='/about' element = {<About/>}/>
+                </Routes>
+            </div>
+            <Footer/>
+        </>
     );
 }
 

@@ -1,0 +1,35 @@
+.footer-container{
+    background-color: #79DAE8;
+    padding: 4rem 0 2rem 0;
+    display: flex;
+    align-items: center;
+    bottom:0;
+    height:80%;
+}
+
+.footer-text{
+    justify-self: start;
+    margin-left:100px;
+    align-items: center;
+    font-size: 1rem;
+    color:white;
+}
+
+.social-links{
+   position: relative;
+   align-items: center;
+   margin-left: 400px;
+}
+.social-links > a{
+    margin-left: 20px;
+    font-size: 20px;
+    color:white;
+}
+.footer-list-wrap{
+    width: 50%;
+    float:left;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    margin:auto;
+}
