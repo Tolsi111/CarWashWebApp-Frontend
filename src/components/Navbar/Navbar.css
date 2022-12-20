@@ -38,6 +38,9 @@
     margin-left:20rem;
     width: 60vh;
 }
+.navbar-logo:hover {
+    text-decoration: none;
+}
 
 #flex{
     display: flex;
