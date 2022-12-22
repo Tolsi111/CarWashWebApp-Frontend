@@ -31,7 +31,7 @@ function NavBar() {
    <>
    <nav className='navbar-home'>
     <div className='navbar-container'>
-        <Link to="/home" className="navbar-logo">
+        <Link to="/home" className="navbar-logo" id={"flex"}>
           <h2 className="first-word">
             Top
           </h2>
@@ -44,22 +44,22 @@ function NavBar() {
         </div> */}
         <ul className={click ? 'nav-menu active': 'nav-menu'}>
           <li className='nav-item'>
-            <Link to ='/home' className='nav-links' onClick={closeMobileMenu}>
+            <Link to ={'/home'} className='nav-links' onClick={closeMobileMenu}>
               Home
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to ='/list-carwash' className='nav-links' onClick={closeMobileMenu}>
+            <Link to ={'/list-carwash'} className='nav-links' onClick={closeMobileMenu}>
               List CarWash
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to ='/register-carwash' className='nav-links' onClick={closeMobileMenu}>
+            <Link to ={'/register-carwash'} className='nav-links' onClick={closeMobileMenu}>
               Register CarWash
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to ='/about' className='nav-links' onClick={closeMobileMenu}>
+            <Link to ={'/about'} className='nav-links' onClick={closeMobileMenu}>
               About Us
             </Link>
           </li>

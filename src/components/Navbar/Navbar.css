@@ -41,6 +41,9 @@ a:focus { text-decoration: none!important; }
     margin-left:20rem;
     width: 60vh;
 }
+.navbar-logo:hover {
+    text-decoration: none;
+}
 
 .navbar-logo >h2.first-word{
   font-family: 'Abel', sans-serif;
