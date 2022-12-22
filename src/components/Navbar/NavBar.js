@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import { Button } from '../Button/Button'
+import { Button } from '../Button/Button';
 import './Navbar.css';
-import {NavLink} from "react-bootstrap";
 
 function NavBar() {
   const navigate = useNavigate();

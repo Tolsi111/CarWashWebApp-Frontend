@@ -1,30 +1,31 @@
 import React from 'react'
 import './Footer.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fafacebook } from '@fortawesome/free-solid-svg-icons'
+import { Container } from 'react-bootstrap'
+
 
 function Footer() {
     return (
         <div className='footer-container'>
             <div className='footer-list-wrap'>
-                <div className="footer-text">
-                    © 2023 by TopWash
-                </div>
+            <div className="footer-text">
+                © 2023 by TopWash
+            </div>
             </div>
             <div className="footer-list-wrap">
-                <div className='social-links'>
-                    <a href="https://facebook.com">
-                        <FacebookIcon/>
-                    </a>
-                    <a href="https://instagram.com">
-                        <InstagramIcon/>
-                    </a>
-                    <a href="https://www.google.com/maps">
-                        <LocationOnIcon/>
-                    </a>
-                </div>
+            <div className='social-links'>
+                <a href="https://facebook.com">
+                    <i className='fa-brands fa-facebook-f'></i>
+                </a>
+                <a href="https://instagram.com">
+                    <i className='fa-brands fa-instagram'></i>
+                </a>
+                <a href="https://www.google.com/maps">
+                <i className="fa-sharp fa-solid fa-location-dot"></i>
+                </a>
+            </div>
             </div>
         </div>
     )
