@@ -20,7 +20,7 @@ function CarWashList() {
                 const loadedCarwashes = [];
 
                 for(const key in res.data.carwashes) {
-                    // console.log(res.data.carwashes[key])
+                    // console.log(res.data.carwashes[key])sal
                     loadedCarwashes.push({
                         id: res.data.carwashes[key].id,
                         name: res.data.carwashes[key].name,
