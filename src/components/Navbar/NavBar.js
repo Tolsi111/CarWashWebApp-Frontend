@@ -1,9 +1,16 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import { Button } from '../Button/Button';
+import AuthContext from '../../context/auth-context';
+import {Button} from "react-bootstrap"
 import './Navbar.css';
 
 function NavBar() {
+  const authCtx = useContext(AuthContext);
+
+  // const handleLogout = () => {
+  //   navigate('/about')
+  // }
+
   const navigate = useNavigate();
 
   const navigateLogin = () =>{
@@ -24,6 +31,18 @@ function NavBar() {
       setButton(true)
     }
   };
+
+  function logout(event) {
+    event.preventDefault();
+    console.log("logging out...");
+    authCtx.onLogout();
+    navigate('/home');
+  }
+  function login(event) {
+    event.preventDefault();
+    console.log("logging in...");
+    navigate('/login');
+  }
 
   window.addEventListener('resize', showButton);
 
@@ -53,18 +72,21 @@ function NavBar() {
               List CarWash
             </Link>
           </li>
-          <li className='nav-item'>
+          {authCtx.role == "ROLE_CARWASH_OWNER" && <li className='nav-item'>
             <Link to ={'/register-carwash'} className='nav-links' onClick={closeMobileMenu}>
               Register CarWash
             </Link>
-          </li>
+          </li>}
           <li className='nav-item'>
             <Link to ={'/about'} className='nav-links' onClick={closeMobileMenu}>
               About Us
             </Link>
           </li>
           </ul>
-          {button && <Button onClick={navigateLogin} buttonStyle='btn--outline'>Login</Button>}
+          {!authCtx.isLoggedIn && <form onSubmit={login}><Button type={"submit"}>Login</Button></form>}
+          {authCtx.isLoggedIn && <form onSubmit={logout}><Button type={"submit"}>Logout</Button></form>}
+          {/* {!authCtx.isLoggedIn && <Button onClick={console.log("LOGIN!")} buttonStyle='btn--outline'>Login</Button>}
+          {!authCtx.isLoggedIn && <Button onClick={console.log("LOGOUT!")} buttonStyle='btn--outline'>Logout</Button>} */}
     </div>
    </nav>
    </>

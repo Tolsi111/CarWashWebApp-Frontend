@@ -5,12 +5,16 @@ import BookingForm from '../BookingFormPage/BookingForm';
 import AppointmentForm from '../BookingFormPage/BookingForm';
 import {LineWave} from 'react-loader-spinner';
 import './CarWashList.css'
+import { useContext } from 'react';
+import AuthContext from '../../context/auth-context';
 
 function CarWashList() {
     const [carWashes, setCarWashes] = useState([]);
     const [showBookingForm, setShowBookingForm] = useState(false);
     const [selectedCarWash, setSelectedCarWash] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+
+    const authCtx = useContext(AuthContext);
 
     useEffect(() => {
         setIsLoading(true);
@@ -78,7 +82,7 @@ function CarWashList() {
                         <Card.Title>{carWash.name}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">{carWash.address}</Card.Subtitle>
                         {/* <Card.Text></Card.Text> */}
-                        <Button onClick={() => handleBookClick(carWash)}>Book</Button>
+                        {authCtx.isLoggedIn && <Button onClick={() => handleBookClick(carWash)}>Book</Button>}
                         {/* Add more details about the car wash here */}
                         {showBookingForm && selectedCarWash === carWash && (
                             <BookingForm

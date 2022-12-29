@@ -7,21 +7,26 @@ import RegisterCarWash from "./pages/RegisterPage/RegisterCarWash";
 import Login from "./pages/LoginPage/Login";
 import About from "./pages/AboutUsPage/About";
 import './App.css';
+import { useContext } from "react";
+import AuthContext from "./context/auth-context";
 
 function App() {
+
+    const authCtx = useContext(AuthContext);
+    console.log(authCtx.isLoggedIn);
 
     return (
         <>
             <NavBar/>
             <div className='page-container'>
                 <Routes>
-                    <Route path='/' element = {<Home/>}/>
-                    <Route path='/home' element = {<Home/>}/>
-                    <Route path='/list-carwash' element = {<CarWashListView/>}/>
-                    <Route path='/register-carwash' element = {<RegisterCarWash/>}/>
-                    <Route path='/login' element = {<Login/>}/>
-                    <Route path='/about' element = {<About/>}/>
-                    <Route path='/*' element = {<Home/>}/>
+                    {<Route path='/' element = {<Home/>}/>}
+                    {<Route path='/home' element = {<Home/>}/>}
+                    {<Route path='/list-carwash' element = {<CarWashListView/>}/>}
+                    {authCtx.role == "ROLE_CARWASH_OWNER" && <Route path='/register-carwash' element = {<RegisterCarWash/>}/>}
+                    {!authCtx.isLoggedIn && <Route path='/login' element = {<Login/>}/>}
+                    {<Route path='/about' element = {<About/>}/>}
+                    {<Route path='/*' element = {<Home/>}/>}
                 </Routes>
             </div>
             <Footer/>

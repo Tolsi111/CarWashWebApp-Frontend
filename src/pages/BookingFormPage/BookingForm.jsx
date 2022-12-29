@@ -22,12 +22,13 @@ function BookingForm({ carWash, handleCancelClick}) {
   // const classes = useStyles();
     const [startTime, setStartTime] = useState();
     const [endTime, setEndTime] = useState();
-    const [service, setService] = useState();
+    const [service, setService] = useState(carWash.services[0].description);
 
     async function handleBookingFormSubmit (event, name, phone, date, time) {
+        console.log("submiting...")
         event.preventDefault();
         const appointment = {
-            customerEmail: "testuser@test.com",
+            customerEmail: "test@test.test",
             carwashName: carWash.name,
             serviceDescription: service,
             startTime: startTime,
@@ -36,9 +37,9 @@ function BookingForm({ carWash, handleCancelClick}) {
         const response = await fetch('http://localhost:8080/appointments', {
             method: 'POST',
             body: JSON.stringify(appointment),
-            // headers: {
-            //     'Content-Type': 'application/json'
-            // }
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
         });
         const data = await response.json();
         // console.log(success);
