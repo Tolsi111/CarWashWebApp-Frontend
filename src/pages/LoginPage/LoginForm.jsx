@@ -3,11 +3,16 @@ import { useContext } from "react";
 import { useRef } from "react";
 import {Button} from "react-bootstrap"
 import AuthContext from "../../context/auth-context";
+import {useNavigate} from 'react-router-dom'
 
 function LoginForm() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const authCtx = useContext(AuthContext);
+    const navigate = useNavigate();
+    const navigateToRegister = () =>{
+        navigate('/register');
+    };
 
     async function submitLogin(event) {
         event.preventDefault();
@@ -37,17 +42,22 @@ function LoginForm() {
     }
 
     return(
-        <form onSubmit={submitLogin}>
-            <div>
-                <label htmlFor={"email"}>Your Email</label>
+        <div className="auth-form-container">
+            <h1>Log In</h1>
+            <div className="register-text">
+                New to this Site?
+                <button className="register-btn" onClick = {navigateToRegister}>Sign Up</button>
+            </div>
+        <form className="login-form" onSubmit={submitLogin}>
+            
+                <label htmlFor={"email"}>Email*</label>
                 <input type={"email"} id={"email"} ref={emailRef}/>
-            </div>
-            <div>
-                <label htmlFor={"password"}>Your Password</label>
+                <label htmlFor={"password"}>Password*</label>
                 <input type={"password"} id={"password"} ref={passwordRef}/>
-            </div>
-            <Button type={"submit"}>Login</Button>
+            
+                <button className="button-submit" type={"submit"}>Login</button>
         </form>
+        </div>
         
     )
 }

@@ -1,9 +1,10 @@
 import React from "react";
+import RegisterForm from './RegisterForm'
 
 function RegisterCarWash(){
     return (
         <div className="register-container">
-            <h2>Register Car Wash</h2>
+            <RegisterForm></RegisterForm>
         </div>
     )
 }
