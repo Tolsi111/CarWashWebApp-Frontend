@@ -13,7 +13,7 @@ function RegisterForm(){
     const telephoneRef = useRef();
     const authCtx = useContext(AuthContext);
     const navigate = useNavigate();
-    const [roles,setRoles]=useState([]);
+    const [roless,setRoless]=useState([]);
     const options = [
         {
             id: 1,
@@ -28,8 +28,8 @@ function RegisterForm(){
     const handleChange = (e) => {
         if(e.target.checked){
             setisChecked(e.target.value);
-            if(!roles.includes(e.target.value)){
-                setRoles([...roles,e.target.value]);
+            if(!roless.includes(e.target.value)){
+                setRoless([...roless,e.target.value]);
             }
         }
     };
@@ -44,15 +44,15 @@ function RegisterForm(){
         console.log(lastnameRef.current.value);
         console.log(emailRef.current.value);
         console.log(passwordRef.current.value);
-        console.log(roles);
+        console.log(roless);
         console.log(telephoneRef.current.value);
 
         const registerObj = {
-            firstname : firstnameRef.current.value,
-            lastname : lastnameRef.current.values,
+            firstName : firstnameRef.current.value,
+            lastName : lastnameRef.current.value,
             email : emailRef.current.value,
             password : passwordRef.current.value,
-            roless : roles,
+            roles : roless,
             telephoneNr : telephoneRef.current.value
         }
         const response = await fetch ('http://localhost:8080/users',{
@@ -63,10 +63,10 @@ function RegisterForm(){
             }
         });
         const data = await response.json();
-        if(data.status =="success")
-{
-    authCtx.onRegister(emailRef.current.value,data.role);
-}
+                 if(data.status =="success")
+ {
+     authCtx.onRegister(emailRef.current.value,data.role);
+ }
 }
 return(
     <div className="auth-form-container">
@@ -86,6 +86,7 @@ return(
                     {options.map((role,index)=>(
                         <li key ={index}>
                             <input
+                                className="checkoxes"
                                 type="checkbox"
                                 id={role.value}
                                 name="roles"
