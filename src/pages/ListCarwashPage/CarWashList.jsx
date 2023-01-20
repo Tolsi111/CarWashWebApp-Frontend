@@ -69,7 +69,7 @@ function CarWashList() {
                             {carWash.address}
                         </p>
                         <footer className="blockquote-footer">
-                        {authCtx.isLoggedIn && <Button onClick={() => handleBookClick(carWash)}>Book</Button>}
+                        {!showBookingForm && authCtx.isLoggedIn && <Button onClick={() => handleBookClick(carWash)}>Book</Button>}
                         {showBookingForm && selectedCarWash === carWash && (
                             <BookingForm
                                 carWash={carWash}
