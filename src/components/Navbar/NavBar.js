@@ -77,7 +77,7 @@ function NavBar() {
               Register CarWash
             </Link>
           </li>}
-          {authCtx.role == "ROLE_USER" && <li className='nav-item'>
+          {authCtx.isLoggedIn && <li className='nav-item'>
             <Link to ={'/appointments'} className='nav-links' onClick={closeMobileMenu}>
               Your appointments
             </Link>
