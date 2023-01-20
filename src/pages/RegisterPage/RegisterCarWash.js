@@ -1,10 +1,10 @@
 import React from "react";
-import RegisterForm from './RegisterForm'
+import RegisterCarWashForm from "./RegisterCarWashForm"
 
 function RegisterCarWash(){
     return (
         <div className="register-container">
-            <RegisterForm></RegisterForm>
+            <RegisterCarWashForm></RegisterCarWashForm>
         </div>
     )
 }

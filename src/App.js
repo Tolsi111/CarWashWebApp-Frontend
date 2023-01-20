@@ -9,6 +9,7 @@ import About from "./pages/AboutUsPage/About";
 import './App.css';
 import { useContext } from "react";
 import AuthContext from "./context/auth-context";
+import RegisterUser from "./pages/RegisterUser/RegisterUser";
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
                     {!authCtx.isLoggedIn && <Route path='/login' element = {<Login/>}/>}
                     {<Route path='/about' element = {<About/>}/>}
                     {<Route path='/*' element = {<Home/>}/>}
-                    {!authCtx.isLoggedIn && <Route path = '/register' element = {<RegisterCarWash/>}/>}
+                    {!authCtx.isLoggedIn && <Route path = '/register' element = {<RegisterUser/>}/>}
                 </Routes>
             </div>
             <Footer/>

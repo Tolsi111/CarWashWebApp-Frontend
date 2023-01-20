@@ -63,10 +63,11 @@ function RegisterForm(){
             }
         });
         const data = await response.json();
-                 if(data.status =="success")
- {
-     authCtx.onRegister(emailRef.current.value,data.role);
- }
+        console.log(data);
+//                  if(data.status =="success")
+//  {
+//      authCtx.onRegister(emailRef.current.value,data.role);
+//  }
 }
 return(
     <div className="auth-form-container">
