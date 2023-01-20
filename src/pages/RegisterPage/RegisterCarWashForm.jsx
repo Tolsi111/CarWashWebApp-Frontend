@@ -39,12 +39,14 @@ function RegisterCarWashForm() {
 
     const handleCheck = (event) => {
         var updatedList = [...checked];
-        if (event.target.checked) {
+        if (event.target.check) {
           updatedList = [...checked, event.target.value];
         } else {
           updatedList.splice(checked.indexOf(event.target.value), 1);
         }
         setChecked(updatedList);
+        console.log(checked);
+
       };
       var isChecked = (item) =>
       checked.includes(item) ? "checked-item" : "not-checked-item";
@@ -52,8 +54,6 @@ function RegisterCarWashForm() {
 
 
 async function submitRegister(event) {
-    setServices(checked);
-    setChecked([]);
     event.preventDefault();
 
     console.log(nameRef.current.value);
@@ -96,7 +96,6 @@ return (
                             id={services.id}
                             name="services"
                             value={services.id}
-                            checked={services.value == isCheck}
                             onChange={handleCheck}
                         />
                         <label htmlFor={services.value} className={isChecked(services)}>
