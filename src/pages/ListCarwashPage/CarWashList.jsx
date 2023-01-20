@@ -50,7 +50,7 @@ function CarWashList() {
     }
 
     return (
-        <div>
+        <div className='scrollable-content'>
             {isLoading && <LineWave
                 className='spinner'
                 height="200"

@@ -10,6 +10,7 @@ import './App.css';
 import { useContext } from "react";
 import AuthContext from "./context/auth-context";
 import RegisterUser from "./pages/RegisterUser/RegisterUser";
+import AppointmentsList from "./pages/AppointmentsPage/AppointmentsList";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
                     {<Route path='/home' element = {<Home/>}/>}
                     {<Route path='/list-carwash' element = {<CarWashListView/>}/>}
                     {authCtx.role == "ROLE_CARWASH_OWNER" && <Route path='/register-carwash' element = {<RegisterCarWash/>}/>}
+                    {authCtx.isLoggedIn && <Route path='/appointments' element = {<AppointmentsList/>}/>}
                     {!authCtx.isLoggedIn && <Route path='/login' element = {<Login/>}/>}
                     {<Route path='/about' element = {<About/>}/>}
                     {<Route path='/*' element = {<Home/>}/>}
