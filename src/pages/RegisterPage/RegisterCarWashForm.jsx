@@ -1,9 +1,9 @@
 import React from 'react';
 import { useContext } from 'react';
 import { useRef } from 'react';
-import { useState,useEffect } from 'react'
-import AuthContext from '../../context/auth-context'
-import { useNavigate } from 'react-router-dom'
+import { useState,useEffect } from 'react';
+import AuthContext from '../../context/auth-context';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function RegisterCarWashForm() {
@@ -14,7 +14,8 @@ function RegisterCarWashForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [serviceopt,setServiceOption] = useState([]);
     const [checked, setChecked] = useState([]);
-    const [check,isCheck] = useState(false);
+    const authCtx = useContext(AuthContext);
+    
     useEffect(() => {
         setIsLoading(true);
         axios.get('http://localhost:8080/services')
@@ -32,39 +33,37 @@ function RegisterCarWashForm() {
                 }
 
                 setServiceOption(loadedServices);
-                 console.log(services);
+                
                 setIsLoading(false)
             })
     }, []);
 
     const handleCheck = (event) => {
-        var updatedList = [...checked];
-        if (event.target.check) {
+        var updatedList =[...checked];
+        if (event.target.checked) {
           updatedList = [...checked, event.target.value];
         } else {
           updatedList.splice(checked.indexOf(event.target.value), 1);
         }
         setChecked(updatedList);
-        console.log(checked);
-
+        setServices(updatedList);
+    
       };
-      var isChecked = (item) =>
-      checked.includes(item) ? "checked-item" : "not-checked-item";
   
 
 
 async function submitRegister(event) {
     event.preventDefault();
-
+    setServices(checked);
     console.log(nameRef.current.value);
     console.log(addressRef.current.value);
-    console.log(ownerEmailRef.current.value);
+    console.log(authCtx.email);
     console.log(services);
 
     const registerObj = {
         name: nameRef.current.value,
         address: addressRef.current.value,
-        ownerEmail: ownerEmailRef.current.value,
+        ownerEmail: authCtx.email,
         serviceId: services
     }
 
@@ -76,7 +75,7 @@ async function submitRegister(event) {
         }
     });
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
 }
 
 
@@ -86,7 +85,7 @@ return (
         <form className="register-form" onSubmit={submitRegister}>
             <input type="text" id={"name"} placeholder="Name" ref={nameRef} />
             <input type="text" id={"address"} placeholder="Address" ref={addressRef} />
-            <input type="email" id={"email"} placeholder="Email" ref={ownerEmailRef} />
+            {/* <input type="email" id={"email"} placeholder="Email" ref={ownerEmailRef} /> */}
             <ul className="flex items-center gap-1">
                 {serviceopt.map((services, index) => (
                     <li key={index}>
@@ -98,7 +97,7 @@ return (
                             value={services.id}
                             onChange={handleCheck}
                         />
-                        <label htmlFor={services.value} className={isChecked(services)}>
+                        <label htmlFor={services.value}>
                             {services.description}
                         </label>
                     </li>
