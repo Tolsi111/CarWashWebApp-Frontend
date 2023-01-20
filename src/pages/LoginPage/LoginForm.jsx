@@ -58,7 +58,6 @@ function LoginForm() {
                 <button className="button-submit" type={"submit"}>Login</button>
         </form>
         </div>
-        
     )
 }
 
