@@ -35,7 +35,7 @@ function LoginForm() {
         const data = await response.json();
 
         if(data.status == "success") {
-            authCtx.onLogin(emailRef.current.value,data.role);
+            authCtx.onLogin(emailRef.current.value,data.role,data.id);
         }
         // console.log(data)
 

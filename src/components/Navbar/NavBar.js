@@ -69,12 +69,17 @@ function NavBar() {
           </li>
           <li className='nav-item'>
             <Link to ={'/list-carwash'} className='nav-links' onClick={closeMobileMenu}>
-              List CarWash
+              CarWash List
             </Link>
           </li>
           {authCtx.role == "ROLE_CARWASH_OWNER" && <li className='nav-item'>
             <Link to ={'/register-carwash'} className='nav-links' onClick={closeMobileMenu}>
               Register CarWash
+            </Link>
+          </li>}
+          {authCtx.role == "ROLE_USER" && <li className='nav-item'>
+            <Link to ={'/appointments'} className='nav-links' onClick={closeMobileMenu}>
+              Your appointments
             </Link>
           </li>}
           <li className='nav-item'>
