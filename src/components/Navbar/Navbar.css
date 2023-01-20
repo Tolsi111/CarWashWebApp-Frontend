@@ -39,7 +39,7 @@ a:focus { text-decoration: none!important; }
     display: flex;
     align-items: center;
     margin-left:20rem;
-    width: 60vh;
+    width: 30rem;
 }
 .navbar-logo:hover {
     text-decoration: none;
@@ -62,14 +62,15 @@ a:focus { text-decoration: none!important; }
 } */
 
 .nav-menu{
-    display: grid;
+    /* display: grid; */
+    display: flex;
     grid-template-columns: repeat(4,auto);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
     width: 60vw;
     justify-content: end;
-    margin-right: 2rem;
+    /* margin-right: rem; */
     /* margin-left:5rem; */
 }
 

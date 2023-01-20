@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, FormGroup, FormLabel, Button, FormControl} from 'react-bootstrap';
+import AuthContext from '../../context/auth-context';
 import CustomDatePicker from "./CustomDatePicker";
 import DatePicker from "react-datepicker";
 
@@ -17,12 +18,13 @@ function BookingForm({ carWash, handleCancelClick}) {
     const [startTime, setStartTime] = useState();
     const [endTime, setEndTime] = useState();
     const [service, setService] = useState(carWash.services[0].description);
+    const authCtx = useContext(AuthContext);
 
     async function handleBookingFormSubmit (event, name, phone, date, time) {
         console.log("submiting...")
         event.preventDefault();
         const appointment = {
-            customerEmail: "test@test.test",
+            customerEmail: authCtx.email,
             carwashName: carWash.name,
             serviceDescription: service,
             startTime: startTime,
