@@ -7,6 +7,7 @@ import {LineWave} from 'react-loader-spinner';
 import './CarWashList.css'
 import { useContext } from 'react';
 import AuthContext from '../../context/auth-context';
+import CardHeader from 'react-bootstrap/esm/CardHeader';
 
 function CarWashList() {
     const [carWashes, setCarWashes] = useState([]);
@@ -78,18 +79,22 @@ function CarWashList() {
             />}
             {!isLoading && carWashes.map(carWash => (
                 <Card key={carWash.id} style={{width: '18rem'}}>
+                    <Card.Header>{carWash.name}</Card.Header>
                     <Card.Body>
-                        <Card.Title>{carWash.name}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">{carWash.address}</Card.Subtitle>
-                        {/* <Card.Text></Card.Text> */}
+                        <blockquote className="blockquote mb-0">
+                        <p>
+                            {carWash.address}
+                        </p>
+                        <footer className="blockquote-footer">
                         {authCtx.isLoggedIn && <Button onClick={() => handleBookClick(carWash)}>Book</Button>}
-                        {/* Add more details about the car wash here */}
                         {showBookingForm && selectedCarWash === carWash && (
                             <BookingForm
                                 carWash={carWash}
                                 handleCancelClick={handleCancelClick}
                             />
                         )}
+                        </footer>
+                        </blockquote>
                     </Card.Body>
                 </Card>
             ))}
