@@ -47,6 +47,7 @@ function AppointmentsList() {
             wrapperClass="spinner"
             visible={true}
         />} */}
+        {appointments.length === 0 && <h1>You have no appointments</h1>}
         {!isLoading && appointments.map(appointment => (
             <Card key={appointment.id} style={{width: '18rem'}} className='item'>
                 <Card.Header>{appointment.carwash}</Card.Header>

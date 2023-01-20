@@ -26,7 +26,7 @@ function App() {
                     {<Route path='/home' element = {<Home/>}/>}
                     {<Route path='/list-carwash' element = {<CarWashListView/>}/>}
                     {authCtx.role == "ROLE_CARWASH_OWNER" && <Route path='/register-carwash' element = {<RegisterCarWash/>}/>}
-                    {authCtx.role == "ROLE_USER" && <Route path='/appointments' element = {<AppointmentsList/>}/>}
+                    {authCtx.isLoggedIn && <Route path='/appointments' element = {<AppointmentsList/>}/>}
                     {!authCtx.isLoggedIn && <Route path='/login' element = {<Login/>}/>}
                     {<Route path='/about' element = {<About/>}/>}
                     {<Route path='/*' element = {<Home/>}/>}
