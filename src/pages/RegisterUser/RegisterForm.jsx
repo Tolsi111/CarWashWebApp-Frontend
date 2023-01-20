@@ -87,7 +87,7 @@ return(
                     {options.map((role,index)=>(
                         <li key ={index}>
                             <input
-                                className="checkoxes"
+                                className="checkboxes"
                                 type="checkbox"
                                 id={role.value}
                                 name="roles"
