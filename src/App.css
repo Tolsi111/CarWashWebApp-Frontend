@@ -84,7 +84,7 @@ label{
     display: block;
     
 }
-.checkoxes{
+.checkboxes{
         width: 15px;
         height: 15px;
         padding: 0;
@@ -116,4 +116,11 @@ label{
     margin-top: 100px;
     margin-left: 50px;
     float:right;
+}
+.checked-item,
+.not-checked-item {
+  margin-left: 10px;
+}
+.checked-item {
+  text-decoration: line-through;
 }
