@@ -27,6 +27,7 @@ function App() {
                     {!authCtx.isLoggedIn && <Route path='/login' element = {<Login/>}/>}
                     {<Route path='/about' element = {<About/>}/>}
                     {<Route path='/*' element = {<Home/>}/>}
+                    {!authCtx.isLoggedIn && <Route path = '/register' element = {<RegisterCarWash/>}/>}
                 </Routes>
             </div>
             <Footer/>

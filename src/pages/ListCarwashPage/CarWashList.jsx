@@ -49,23 +49,6 @@ function CarWashList() {
         setShowBookingForm(false);
     }
 
-    // const handleBookingFormSubmit = (event, name, phone, date, time) => {
-    //     event.preventDefault();
-    //     console.log("name: " + name);
-    //     console.log("phone: " + phone);
-    //     console.log("date: " + date);
-    //     console.log("time" + time);
-    //     // Send a POST request to the server to book the car wash
-    //     // You can use the name, phone, date, and time variables to send the booking information
-    //     // Reset the form fields after the booking is successful
-    //     ////
-    //     //customerEmail//testuser@test.com
-    //     //carwashName name
-    //     //serviceDescription
-    //     //startTime
-    //     //endTime
-    // }
-
     return (
         <div>
             {isLoading && <LineWave
