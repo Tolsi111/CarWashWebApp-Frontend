@@ -1,6 +1,5 @@
 import React from "react";
-import { useContext,useState } from "react";
-import { useRef } from "react";
+import { useContext,useState, useRef } from "react";
 import {Button, Option} from "react-bootstrap"
 import AuthContext from "../../context/auth-context";
 import {useNavigate} from 'react-router-dom'
@@ -14,6 +13,7 @@ function RegisterForm(){
     const authCtx = useContext(AuthContext);
     const navigate = useNavigate();
     const [roless,setRoless]=useState([]);
+    const [checked,setChecked] = useState([]);
     const options = [
         {
             id: 1,
@@ -25,15 +25,18 @@ function RegisterForm(){
             value:"ROLE_CARWASH_OWNER",
         },
     ];
-    const handleChange = (e) => {
-        if(e.target.checked){
-            setisChecked(e.target.value);
-            if(!roless.includes(e.target.value)){
-                setRoless([...roless,e.target.value]);
-            }
+    const handleCheck = (event) => {
+        var updatedList =[...checked];
+        if (event.target.checked) {
+          updatedList = [...checked, event.target.value];
+        } else {
+          updatedList.splice(checked.indexOf(event.target.value), 1);
         }
-    };
-    const [isChecked,setisChecked] = useState(false);
+        setChecked(updatedList);
+        setRoless(updatedList);
+        
+    
+      };
     const navigateToLogin= () =>{
         navigate('/login');
     };
@@ -63,11 +66,10 @@ function RegisterForm(){
             }
         });
         const data = await response.json();
-        console.log(data);
-//                  if(data.status =="success")
-//  {
-//      authCtx.onRegister(emailRef.current.value,data.role);
-//  }
+                 if(data.status =="success")
+ {
+     authCtx.onRegister(emailRef.current.value,data.role);
+ }
 }
 return(
     <div className="auth-form-container">
@@ -87,13 +89,12 @@ return(
                     {options.map((role,index)=>(
                         <li key ={index}>
                             <input
-                                className="checkboxes"
+                                className="checkoxes"
                                 type="checkbox"
                                 id={role.value}
                                 name="roles"
                                 value={role.value}
-                                checked={role.value==isChecked}
-                                onChange = {handleChange}
+                                onChange = {handleCheck}
                         />
                         <label htmlFor = {role.value} className="text-sm ml-1">
                             {role.label}
